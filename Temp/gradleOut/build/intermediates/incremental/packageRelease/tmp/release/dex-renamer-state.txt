@@ -1,0 +1,4 @@
+#Fri Apr 26 19:18:28 JST 2019
+base.0=/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Temp/gradleOut/build/intermediates/transforms/dexMerger/release/0
+path.0=classes.dex
+renamed.0=classes.dex
