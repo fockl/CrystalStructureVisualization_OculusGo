@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaserPointerController : MonoBehaviour
 {
     Vector3 vel3 = new Vector3(0.0f, 1.0f, 0.0f);
-    /*
+
     [SerializeField]
     private Transform rightHandAnchor;
     [SerializeField]
@@ -19,8 +19,10 @@ public class LaserPointerController : MonoBehaviour
 
     private Transform pointer;
     private Vector3 lastCatchObjPosition;
-    private Rigidbody hitRb;
-    private Rigidbody catchRb;
+    private bool rotate_flag = false;
+
+    private Vector3 before_vec;
+    private Vector3 after_vec;
 
     public Vector3 rotate_velocity;
 
@@ -40,7 +42,7 @@ public class LaserPointerController : MonoBehaviour
             return centerEyeAnchor;
         }
     }
-    */
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,21 +52,19 @@ public class LaserPointerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
+
         UpdateLaser();
 
-        if(hitRb)
+        if(Input.GetKeyDown(KeyCode.Space) || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
         {
-            if(Input.GetKeyDown(KeyCode.Space) || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
-            {
-                CatchObject();
-            }
+            Debug.Log("KeyCode.Space");
+            rotate_flag = true;
+        }
+        if(Input.GetKeyUp(KeyCode.Space) || OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
+        {
+            rotate_flag = false;
         }
 
-        if(catchRb)
-        {
-            lastCatchObjPosition = catchRb.transform.position;
-        }
     }
 
     private void UpdateLaser()
@@ -78,19 +78,23 @@ public class LaserPointerController : MonoBehaviour
         if(Physics.Raycast(pointerRay, out hitInfo, maxDistance))
         {
             laserPointerRenderer.SetPosition(1, hitInfo.point);
-            hitRb = hitInfo.rigidbody;
         }
         else
         {
             laserPointerRenderer.SetPosition(1, pointerRay.origin + pointerRay.direction * maxDistance);
-            hitRb = null;
         }
-        */
+        if (!rotate_flag)
+        {
+            before_vec = pointerRay.direction;
+        }
+        after_vec = pointerRay.direction;
+
     }
 
-    /*
+
     private Ray GenerateRay()
     {
+        return new Ray(pointer.position, pointer.position);
         if(OVRManager.isHmdPresent)
         {
             return new Ray(pointer.position, pointer.forward);
@@ -100,39 +104,22 @@ public class LaserPointerController : MonoBehaviour
             return new Ray(pointer.position + new Vector3(0, -1.4f, 0), pointer.forward + new Vector3(0, -0.15f, 0));
         }
     }
-    */
+
     public Vector3 get_rotate_vector()
     {
-        return vel3;
-    }
-    /*
-    private void CatchObject()
-    {
-        FixedJoint pointerJoint = pointer.gameObject.GetComponent<FixedJoint>();
-        if(pointerJoint)
+        Vector3 vec_tmp = new Vector3( 0.0f, 0.0f, 0.0f);
+        if (rotate_flag)
         {
-            pointerJoint.connectedBody = null;
-            Destroy(pointerJoint);
+            vec_tmp = Vector3.Cross(before_vec, after_vec);
+            //Debug.Log("before_vec : " + before_vec.ToString());
+            //Debug.Log("after_vec : " + after_vec.ToString());
+            //Debug.Log("vec_tmp : " + vec_tmp.ToString());
         }
-        catchRb = hitRb;
-
-        pointerJoint = pointer.gameObject.AddComponent<FixedJoint>();
-        pointerJoint.breakForce = 20000;
-        pointerJoint.breakTorque = 20000;
-        pointerJoint.connectedBody = catchRb;
+        before_vec = after_vec;
+        const float C = 100;
+        vec_tmp.x *= C;
+        vec_tmp.y *= C;
+        vec_tmp.z *= C;
+        return -vec_tmp;
     }
-
-    private void ThrowObject()
-    {
-        FixedJoint pointerJoint = pointer.gameObject.GetComponent<FixedJoint>();
-        if(pointerJoint)
-        {
-            pointerJoint.connectedBody = null;
-            Destroy(pointerJoint);
-            Vector3 catchRbVelocity = (catchRb.transform.position - lastCatchObjPosition) / Time.deltaTime;
-            catchRb.AddForce(catchRbVelocity, ForceMode.Impulse);
-        }
-        catchRb = null;
-    }
-    */
 }

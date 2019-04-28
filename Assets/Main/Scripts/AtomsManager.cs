@@ -17,8 +17,6 @@ public class AtomsManager : MonoBehaviour
     private const int S = 8;
     private GameObject[,,,] atom = new GameObject[Lx,Ly,Lz,S];
 
-    public UnityEvent OnDestroy;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +25,6 @@ public class AtomsManager : MonoBehaviour
         //laserpointercontroller = GameObject.Find("LaserPointer");
         laserpointercontroller = GameObject.Find("OVRCameraRig");
         script = laserpointercontroller.GetComponent<LaserPointerController>();
-        if (OnDestroy == null)
-            OnDestroy = new UnityEvent();
     }
 
     // Update is called once per frame
@@ -36,7 +32,7 @@ public class AtomsManager : MonoBehaviour
     {
         //Debug.Log(script);
         Vector3 rotate_vector = script.get_rotate_vector();
-        Debug.Log("rotate_vector : " + rotate_vector.ToString());
+        //Debug.Log("rotate_vector : " + rotate_vector.ToString());
         Vector3 point = new Vector3(0.0f, 0.0f, 0.0f);
         float angle = rotate_vector.magnitude;
         Vector3 axis = rotate_vector.normalized;

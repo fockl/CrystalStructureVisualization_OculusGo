@@ -77,10 +77,17 @@ public class PlayerController : MonoBehaviour
         }
         if(Mathf.Abs(Input.GetAxis("Vertical")) > 0)
         {
-            if (Input.GetAxis("Vertical") > 0)
-                rb.MovePosition(transform.position + transform.forward * speed * Time.fixedDeltaTime);
+            if (Input.GetKey(KeyCode.Space))
+            {
+                transform.Rotate(Input.GetAxis("Vertical") * rotateSpeed, 0, 0);
+            }
             else
-                rb.MovePosition(transform.position - transform.forward * speed * Time.fixedDeltaTime);
+            {
+                if (Input.GetAxis("Vertical") > 0)
+                    rb.MovePosition(transform.position + transform.forward * speed * Time.fixedDeltaTime);
+                else
+                    rb.MovePosition(transform.position - transform.forward * speed * Time.fixedDeltaTime);
+            }
         }
     }
 }
