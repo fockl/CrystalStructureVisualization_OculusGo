@@ -57,7 +57,7 @@ public class LaserPointerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space) || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
         {
-            Debug.Log("KeyCode.Space");
+            //Debug.Log("KeyCode.Space");
             rotate_flag = true;
         }
         if(Input.GetKeyUp(KeyCode.Space) || OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
@@ -94,7 +94,7 @@ public class LaserPointerController : MonoBehaviour
 
     private Ray GenerateRay()
     {
-        return new Ray(pointer.position, pointer.position);
+        //return new Ray(pointer.position, pointer.position);
         if(OVRManager.isHmdPresent)
         {
             return new Ray(pointer.position, pointer.forward);
@@ -116,7 +116,7 @@ public class LaserPointerController : MonoBehaviour
             //Debug.Log("vec_tmp : " + vec_tmp.ToString());
         }
         before_vec = after_vec;
-        const float C = 100;
+        const float C = 100.0f;
         vec_tmp.x *= C;
         vec_tmp.y *= C;
         vec_tmp.z *= C;

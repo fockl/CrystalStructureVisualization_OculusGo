@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{DE2140FF-47B9-78EB-23DE-24DEA1561A8E}</ProjectGuid>
+    <ProjectGuid>{2636218A-CCF1-74C7-01F7-92182C03BEA9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -62,6 +62,8 @@
   <ItemGroup>
     <Compile Include="Assets\Main\Scripts\AtomsController.cs" />
     <Compile Include="Assets\Main\Scripts\AtomsManager.cs" />
+    <Compile Include="Assets\Main\Scripts\Button_Manager.cs" />
+    <Compile Include="Assets\Main\Scripts\Button_Script.cs" />
     <Compile Include="Assets\Main\Scripts\LaserPointerController.cs" />
     <Compile Include="Assets\Main\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Oculus\VR\Scripts\Composition\OVRCameraComposition.cs" />
@@ -127,19 +129,19 @@
     <None Include="Assets\Oculus\VR\Resources\Underlay Impostor.shader" />
     <None Include="Assets\Oculus\VR\Plugins\placeholder.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -340,13 +342,13 @@
       <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

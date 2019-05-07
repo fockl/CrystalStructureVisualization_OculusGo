@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
 {
 
     private Rigidbody rb;
-    private float speed = 1.0f;
-    private float rotateSpeed = 1.0f;
+    private float speed = 3.0f;
+    private float rotateSpeed = 3.0f;
     // Start is called before the first frame update
     void Start()
     {

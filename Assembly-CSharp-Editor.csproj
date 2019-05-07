@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D369A81E-6BC9-66A3-98DA-2B4903FFD0CD}</ProjectGuid>
+    <ProjectGuid>{8605EF29-E473-6CE7-D150-821306F8E77C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -70,19 +70,19 @@
     <Compile Include="Assets\Oculus\VR\Scripts\Editor\OVRManagerEditor.cs" />
     <None Include="Assets\Oculus\VR\Editor\AndroidManifest.OVRSubmission.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -322,19 +322,19 @@
       <HintPath>/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructure/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>/Users/fockl/Desktop/技術書典6/OculusGo/build/block/CrystalStructureVisualization_OculusGo/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -693,7 +693,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{DE2140FF-47B9-78EB-23DE-24DEA1561A8E}</Project>
+      <Project>{2636218A-CCF1-74C7-01F7-92182C03BEA9}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
   </ItemGroup>
