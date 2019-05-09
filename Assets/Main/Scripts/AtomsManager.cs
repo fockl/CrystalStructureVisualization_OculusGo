@@ -23,6 +23,7 @@ public class AtomsManager : MonoBehaviour
     public int Lx;
     public int Ly;
     public int Lz;
+    public string structure_name;
     private Vector3[] units;
     private int S;
 
@@ -47,7 +48,7 @@ public class AtomsManager : MonoBehaviour
     void Update()
     {
         //Debug.Log(script);
-        Vector3 rotate_vector = script.get_rotate_vector();
+        Vector3 rotate_vector = script.Get_rotate_vector();
         //Debug.Log("rotate_vector : " + rotate_vector.ToString());
         Vector3 point = new Vector3(0.0f, 0.0f, 0.0f);
         float angle = rotate_vector.magnitude;
@@ -86,6 +87,7 @@ public class AtomsManager : MonoBehaviour
                     new Vector3(0.75f, 0.25f, 0.75f),
                     new Vector3(0.25f, 0.75f, 0.75f)
                 };
+                structure_name = "Diamond Structure";
                 break;
             case 1:
                 units = new Vector3[]
@@ -93,6 +95,7 @@ public class AtomsManager : MonoBehaviour
                     new Vector3(0.0f, 0.0f, 0.0f),
                     new Vector3(0.5f, 0.5f, 0.5f)
                 };
+                structure_name = "bcc Structure";
                 break;
             case 2:
                 units = new Vector3[]
@@ -102,6 +105,7 @@ public class AtomsManager : MonoBehaviour
                     new Vector3(0.5f, 0.0f, 0.5f),
                     new Vector3(0.0f, 0.5f, 0.5f)
                 };
+                structure_name = "fcc Structure";
                 break;
         }
         S = units.Length;

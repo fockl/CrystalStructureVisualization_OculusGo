@@ -8,6 +8,7 @@ public class Button_Demo : MonoBehaviour
     Button cube;
     Button sphere;
     // Start is called before the first frame update
+
     void Start()
     {
         sphere = GameObject.Find("/Buttons/Canvas/Button1").GetComponent<Button>();

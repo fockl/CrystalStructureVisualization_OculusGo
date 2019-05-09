@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LaserPointerController : MonoBehaviour
 {
-    Vector3 vel3 = new Vector3(0.0f, 1.0f, 0.0f);
-
     [SerializeField]
     private Transform rightHandAnchor;
     [SerializeField]
@@ -15,7 +13,7 @@ public class LaserPointerController : MonoBehaviour
     [SerializeField]
     private LineRenderer laserPointerRenderer;
 
-    private float maxDistance = 10.0f;
+    private float maxDistance = 100.0f;
 
     private Transform pointer;
     private Vector3 lastCatchObjPosition;
@@ -105,7 +103,7 @@ public class LaserPointerController : MonoBehaviour
         }
     }
 
-    public Vector3 get_rotate_vector()
+    public Vector3 Get_rotate_vector()
     {
         Vector3 vec_tmp = new Vector3( 0.0f, 0.0f, 0.0f);
         if (rotate_flag)
