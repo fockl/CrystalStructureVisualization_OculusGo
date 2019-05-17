@@ -68,6 +68,10 @@
     <Compile Include="Assets\Main\Scripts\AtomsManager.cs" />
     <Compile Include="Assets\Main\Scripts\Button_Manager.cs" />
     <Compile Include="Assets\Main\Scripts\Button_Script.cs" />
+    <Compile Include="Assets\Main\Scripts\ButtonScript.cs" />
+    <Compile Include="Assets\Main\Scripts\CanvasButton.cs" />
+    <Compile Include="Assets\Main\Scripts\CanvasButtonText.cs" />
+    <Compile Include="Assets\Main\Scripts\CanvasScript.cs" />
     <Compile Include="Assets\Main\Scripts\CanvasText.cs" />
     <Compile Include="Assets\Main\Scripts\LaserPointerController.cs" />
     <Compile Include="Assets\Main\Scripts\PlayerController.cs" />

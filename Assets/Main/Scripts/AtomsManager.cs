@@ -20,12 +20,17 @@ public class AtomsManager : MonoBehaviour
     */
     private GameObject[] atom;
     private GameObject[] line;
+    private int[] LineBeginNum;
+    private int[] LineEndNum;
     public int Lx;
     public int Ly;
     public int Lz;
+    public float BOND_LENGTH;
+    public int structure_type;
     public string structure_name;
     private Vector3[] units;
     private int S;
+    private float Scale = 5.0f;
 
     public UnityEvent OnDestroy;
 
@@ -38,8 +43,12 @@ public class AtomsManager : MonoBehaviour
 
         if (OnDestroy == null)
             OnDestroy = new UnityEvent();
-
-        SetAtoms(0);
+        Lx = 2;
+        Ly = 2;
+        Lz = 2;
+        BOND_LENGTH = 0.6f;
+        structure_type = 0;
+        SetAtoms();
         CreateAtoms();
         CreateLines();
     }
@@ -53,26 +62,24 @@ public class AtomsManager : MonoBehaviour
         Vector3 point = new Vector3(0.0f, 0.0f, 0.0f);
         float angle = rotate_vector.magnitude;
         Vector3 axis = rotate_vector.normalized;
-        for(int x = 0; x < Lx; x++)
+        foreach(var a in atom) a.transform.RotateAround(point, axis, angle);
+        //foreach (var l in line) l.transform.RotateAround(point, axis, angle);
+        for(int i=0; i<line.Length; ++i)
         {
-            for(int y = 0; y < Ly; y++)
-            {
-                for(int z = 0; z < Lz; z++)
-                {
-                    for(int s = 0; s < S; s++)
-                    {
-                        int index = x * Ly * Lz * S + y * Lz * S + z * S + s;
-                        atom[index].transform.RotateAround(point, axis, angle);
-                    }
-                }
-            }
-        }
-        DestroyLines();
-        CreateLines();
-    }
+            Vector3 newBeginPos = atom[LineBeginNum[i]].transform.position;
+            Vector3 newEndPos = atom[LineEndNum[i]].transform.position;
 
-    private void SetAtoms(int structure_type)
+            var lRend = line[i].GetComponent<LineRenderer>();
+            //lRend.transform.RotateAround(point, axis, angle);
+            lRend.SetPosition(0, newBeginPos);
+            lRend.SetPosition(1, newEndPos);
+        }
+    }
+    
+    private void SetAtoms()
     {
+        while (structure_type < 0) structure_type += 3;
+        structure_type = structure_type % 3;
         switch (structure_type)
         {
             case 0:
@@ -113,14 +120,8 @@ public class AtomsManager : MonoBehaviour
 
     private void CreateAtoms()
     {
-        Lx = 2;
-        Ly = 2;
-        Lz = 2;
         atom = new GameObject[Lx*Ly*Lz*S];
 
-        float Scalex = 10.0f;
-        float Scaley = 10.0f;
-        float Scalez = 10.0f;
         var Shift = new Vector3(-5.0f, -5.0f, -5.0f);
         var color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
 
@@ -132,9 +133,9 @@ public class AtomsManager : MonoBehaviour
                 {
                     for (int s = 0; s < S; ++s)
                     {
-                        var x_pos = (units[s].x + x * 1.0f) * Scalex / Lx + Shift.x;
-                        var y_pos = (units[s].y + y * 1.0f) * Scaley / Ly + Shift.y;
-                        var z_pos = (units[s].z + z * 1.0f) * Scalez / Lz + Shift.z;
+                        var x_pos = (units[s].x + x * 1.0f) * Scale + Shift.x;
+                        var y_pos = (units[s].y + y * 1.0f) * Scale + Shift.y;
+                        var z_pos = (units[s].z + z * 1.0f) * Scale + Shift.z;
                         var position = new Vector3(x_pos, y_pos, z_pos);
                         int index = x * Ly * Lz * S + y * Lz * S + z * S + s;
                         atom[index] = Instantiate(AtomsPrefab, position, new Quaternion());
@@ -149,27 +150,15 @@ public class AtomsManager : MonoBehaviour
 
     private void DestroyAtoms()
     {
-        for(int x=0; x<Lx; ++x)
-        {
-            for(int y=0; y<Ly; ++y)
-            {
-                for(int z=0; z<Lz; ++z)
-                {
-                    for(int s=0; s<S; ++s)
-                    {
-                        int index = x * Ly * Lz * S + y * Lz * S + z * S + s;
-                        Destroy(atom[index]);
-                    }
-                }
-            }
-        }
+        foreach (var a in atom) Destroy(a);
         OnDestroy.Invoke();
     }
 
     private void CreateLines()
     {
         line = new GameObject[0];
-        var BOND_LENGTH = 3.0f;
+        LineBeginNum = new int[0];
+        LineEndNum = new int[0];
         var color = new Color(0.3f, 0.3f, 1.0f, 0.5f);
         for (int index1 = 0; index1 < atom.Length; ++index1)
         {
@@ -178,7 +167,7 @@ public class AtomsManager : MonoBehaviour
                 Vector3 tmp1 = atom[index1].transform.position;
                 Vector3 tmp2 = atom[index2].transform.position;
                 Vector3 diff = tmp1 - tmp2;
-                if(diff.magnitude <= BOND_LENGTH)
+                if(diff.magnitude <= BOND_LENGTH*Scale)
                 {
                     GameObject newLine = new GameObject("Line");
                     LineRenderer lRend = newLine.AddComponent<LineRenderer>();
@@ -192,7 +181,17 @@ public class AtomsManager : MonoBehaviour
                     GameObject[] line_copy = new GameObject[line.Length + 1];
                     System.Array.Copy(line, line_copy, line.Length);
                     line_copy[line.Length] = newLine;
-                    line = line_copy;    
+                    line = line_copy;
+
+                    int[] LBN_copy = new int[LineBeginNum.Length + 1];
+                    System.Array.Copy(LineBeginNum, LBN_copy, LineBeginNum.Length);
+                    LBN_copy[LineBeginNum.Length] = index1;
+                    LineBeginNum = LBN_copy;
+
+                    int[] LEN_copy = new int[LineEndNum.Length + 1];
+                    System.Array.Copy(LineEndNum, LEN_copy, LineEndNum.Length);
+                    LEN_copy[LineEndNum.Length] = index2;
+                    LineEndNum = LEN_copy;
                 }
             }
         }
@@ -201,18 +200,78 @@ public class AtomsManager : MonoBehaviour
 
     private void DestroyLines()
     {
-        for(int i=0; i<line.Length; ++i)
-        {
-            Destroy(line[i]);
-        }
+        foreach (var l in line) Destroy(l);
         OnDestroy.Invoke();
     }
 
-
-    public void ChangeAtoms(int structure_type)
+    public void ChangeAtoms()
     {
         DestroyAtoms();
-        SetAtoms(structure_type);
+        DestroyLines();
+        SetAtoms();
         CreateAtoms();
+        CreateLines();
+        Debug.Log("num Atoms = " + atom.Length.ToString());
     }
+
+    public void addLx()
+    {
+        Lx++;
+        if (Lx > 10) Lx = 10;
+    }
+
+    public void minusLx()
+    {
+        Lx--;
+        if (Lx <= 0) Lx = 1;
+    }
+
+    public void addLy()
+    {
+        Ly++;
+        if (Ly > 10) Ly = 10;
+    }
+
+    public void minusLy()
+    {
+        Ly--;
+        if (Ly <= 0) Ly = 1;
+    }
+
+    public void addLz()
+    {
+        Lz++;
+        if (Lz > 10) Lz = 10;
+    }
+
+    public void minusLz()
+    {
+        Lz--;
+        if (Lz <= 0) Lz = 1;
+    }
+
+    public void forward_structure_type()
+    {
+        structure_type++;
+        structure_type %= 3;
+    }
+
+    public void backward_structure_type()
+    {
+        structure_type--;
+        structure_type += 3;
+        structure_type %= 3;
+    }
+
+    public void addBL()
+    {
+        BOND_LENGTH += 0.1f;
+    }
+
+    public void minusBL()
+    {
+        BOND_LENGTH -= 0.1f;
+        if (BOND_LENGTH < 0.05f) BOND_LENGTH = 0.1f;
+    }
+
 }

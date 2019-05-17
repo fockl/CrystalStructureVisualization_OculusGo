@@ -25,15 +25,18 @@ public class Button_Script : MonoBehaviour
         switch (transform.name)
         {
             case "Button1":
-                atomsmanagerscript.ChangeAtoms(0);
+                atomsmanagerscript.structure_type = 0;
+                atomsmanagerscript.ChangeAtoms();
                 Debug.Log("Diamond");
                 break;
             case "Button2":
-                atomsmanagerscript.ChangeAtoms(1);
+                atomsmanagerscript.structure_type = 1;
+                atomsmanagerscript.ChangeAtoms();
                 Debug.Log("BCC");
                 break;
             case "Button3":
-                atomsmanagerscript.ChangeAtoms(2);
+                atomsmanagerscript.structure_type = 2;
+                atomsmanagerscript.ChangeAtoms();
                 Debug.Log("FCC");
                 break;
         }

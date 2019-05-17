@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        //Debug.Log("forward : " + transform.forward.ToString());
     }
 
     // Update is called once per frame
@@ -22,10 +23,12 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        //Debug.Log("Update forward : " + transform.forward.ToString());
     }
 
     void FixedUpdate()
     {
+        //Debug.Log("FixedUpdate forward : " + transform.forward.ToString());
         Move();
     }
 
@@ -46,6 +49,47 @@ public class PlayerController : MonoBehaviour
         //Vector3 cameraDir = Camera.main.transform.forward;
         //return Vector3.ProjectOnPlane(cameraDir, Vector3.up);
         return Camera.main.transform.forward;
+    }
+
+    public Vector3 getForward()
+    {
+        if(OVRManager.isHmdPresent)
+        {
+            return getCameraForward();
+        }
+        else
+        {
+            return transform.forward;
+        }
+    }
+
+    public Vector3 getUp()
+    {
+        if (OVRManager.isHmdPresent)
+        {
+            return Camera.main.transform.up;
+        }
+        else
+        {
+            return transform.up;
+        }
+    }
+
+    public Vector3 getRight()
+    {
+        if (OVRManager.isHmdPresent)
+        {
+            return Camera.main.transform.right;
+        }
+        else
+        {
+            return transform.right;
+        }
+    }
+
+    public Vector3 getPosition()
+    {
+        return transform.position;
     }
 
     private void moveOculusGo()

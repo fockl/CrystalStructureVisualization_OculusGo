@@ -8,38 +8,62 @@ public class CanvasText : MonoBehaviour
     public GameObject score_object = null;
 
     private GameObject atomsmanager;
-    AtomsManager script;
+    AtomsManager AMscript;
 
-    GameObject viewer;
+    public GameObject playercontroller = null;
+    PlayerController PCscript;
+
+    //GameObject viewer;
 
     int Lx = 0;
     int Ly = 0;
     int Lz = 0;
+    float BOND_LENGTH = 0.0f;
     string structure_name;
 
     private float R = 1.0f;
 
-    Vector3 TextPos = new Vector3(-1.5f, 0.4f, 0.0f);
     double TextScale = 0.01;
 
     // Start is called before the first frame update
     void Start()
     {
         atomsmanager = GameObject.Find("AtomsManager");
-        script = atomsmanager.GetComponent<AtomsManager>();
+        AMscript = atomsmanager.GetComponent<AtomsManager>();
 
-        viewer = GameObject.Find("OVRCameraRig");
+        //viewer = GameObject.Find("OVRCameraRig");
+
+        //playercontroller = GameObject.Find("PlayerController");
+        PCscript = playercontroller.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Lx = script.Lx;
-        Ly = script.Ly;
-        Lz = script.Lz;
-        structure_name = script.structure_name;
+        Lx = AMscript.Lx;
+        Ly = AMscript.Ly;
+        Lz = AMscript.Lz;
+        BOND_LENGTH = AMscript.BOND_LENGTH;
+        structure_name = AMscript.structure_name;
         Text score_text = score_object.GetComponent<Text>();
-        score_text.text = structure_name + "\nLx : " + Lx.ToString() + "\nLy : " + Ly.ToString() + "\nLz : " + Lz.ToString();
-        score_text.transform.position = viewer.transform.position + R*viewer.transform.forward + TextPos;
+        string text = structure_name + "\n";
+        text = text + "Lx          : " + Lx.ToString() + "\n";
+        text = text + "Ly          : " + Ly.ToString() + "\n";
+        text = text + "Lz          : " + Lz.ToString() + "\n";
+        text = text + "\n";
+        text = text + "Bond Length : " + BOND_LENGTH.ToString("f2");
+        score_text.text = text;
+        Vector3 forward = PCscript.getForward();
+        Vector3 position = PCscript.getPosition();
+        score_text.transform.position = position + R*forward;
+        score_text.transform.LookAt(position);
+        score_text.transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
+        //Debug.Log(score_text.transform.position.x.ToString() + " , " + score_text.transform.position.y.ToString() + " , " + score_text.transform.position.z.ToString());
+        //Debug.Log(score_text.transform.position.ToString() + " , " + score_text.transform.forward.ToString());
+    }
+
+    public Vector3 getPosition()
+    {
+        return score_object.transform.position;
     }
 }

@@ -3,14 +3,14 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AtomsController
     - AtomsManager
-    - Button_Script
+    - CanvasButton
+    - CanvasButtonText
+    - CanvasText
     - LaserPointerController
     - OVRCameraRig
     - OVRManager
-    - OVRRaycaster
     - OVRTrackedRemote
     - PlayerController
-    - UnityEngine.EventSystems.OVRInputModule
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
@@ -22,11 +22,8 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
-    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
-    - UnityEngine.UI.Image
-    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkCallbacks
@@ -66,59 +63,55 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9272}
-    - Class: 114
       Script: {instanceID: 9290}
     - Class: 114
       Script: {instanceID: 9306}
     - Class: 114
       Script: {instanceID: 9360}
     - Class: 114
-      Script: {instanceID: 9362}
+      Script: {instanceID: 9364}
     - Class: 114
-      Script: {instanceID: 9380}
+      Script: {instanceID: 9382}
     - Class: 114
-      Script: {instanceID: 9400}
+      Script: {instanceID: 9402}
     - Class: 114
-      Script: {instanceID: 9414}
+      Script: {instanceID: 9416}
     - Class: 114
-      Script: {instanceID: 9434}
+      Script: {instanceID: 9436}
     - Class: 114
-      Script: {instanceID: 9466}
+      Script: {instanceID: 9470}
     - Class: 114
-      Script: {instanceID: 9468}
+      Script: {instanceID: 9476}
     - Class: 114
-      Script: {instanceID: 9474}
-    - Class: 114
-      Script: {instanceID: 9480}
-    - Class: 114
-      Script: {instanceID: 9488}
-    - Class: 114
-      Script: {instanceID: 9522}
-    - Class: 114
-      Script: {instanceID: 9524}
+      Script: {instanceID: 9482}
     - Class: 114
       Script: {instanceID: 9526}
     - Class: 114
-      Script: {instanceID: 9542}
+      Script: {instanceID: 9528}
     - Class: 114
-      Script: {instanceID: 9766}
+      Script: {instanceID: 9768}
     - Class: 114
-      Script: {instanceID: 9864}
+      Script: {instanceID: 9866}
     - Class: 114
-      Script: {instanceID: 10200}
+      Script: {instanceID: 10202}
     - Class: 114
-      Script: {instanceID: 10246}
+      Script: {instanceID: 10248}
     - Class: 114
-      Script: {instanceID: 10392}
+      Script: {instanceID: 10290}
     - Class: 114
-      Script: {instanceID: 10558}
+      Script: {instanceID: 10396}
     - Class: 114
-      Script: {instanceID: 10570}
+      Script: {instanceID: 10564}
     - Class: 114
-      Script: {instanceID: 10812}
+      Script: {instanceID: 10576}
     - Class: 114
-      Script: {instanceID: 11098}
+      Script: {instanceID: 10808}
+    - Class: 114
+      Script: {instanceID: 10892}
+    - Class: 114
+      Script: {instanceID: 11108}
+    - Class: 114
+      Script: {instanceID: 12922}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -132,8 +125,6 @@ ScriptsOnlyBuild:
     - Class: 136
       Script: {instanceID: 0}
     - Class: 157
-      Script: {instanceID: 0}
-    - Class: 213
       Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
@@ -212,6 +203,12 @@ ScriptsOnlyBuild:
     className: ObjectPool
   - hash:
       serializedVersion: 2
+      Hash: 6e82df8b649989bffbcd040afbf30fab
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ButtonScript
+  - hash:
+      serializedVersion: 2
       Hash: 04e4a8b0447477cc4e933d9e5311188f
     assemblyName: UnityEngine.XR.LegacyInputHelpers.dll
     namespaceName: UnityEngine.XR.LegacyInputHelpers
@@ -224,7 +221,7 @@ ScriptsOnlyBuild:
     className: GroupTrack
   - hash:
       serializedVersion: 2
-      Hash: a9b9f30848e69f8165de033f291a68ca
+      Hash: e7b009aafead0192d4e6a979794ed86d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AtomsManager
@@ -938,6 +935,12 @@ ScriptsOnlyBuild:
     className: VRCameraUI
   - hash:
       serializedVersion: 2
+      Hash: ba4840c7e89371ca4e95a011146934c7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CanvasText
+  - hash:
+      serializedVersion: 2
       Hash: 9edf0788742c31d8eaaf32cf4feac747
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -996,6 +999,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_FontAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CanvasScript
   - hash:
       serializedVersion: 2
       Hash: e1300922cc039f41ab46a47f4cb05898
@@ -1130,6 +1139,12 @@ ScriptsOnlyBuild:
     className: OVRLint
   - hash:
       serializedVersion: 2
+      Hash: 272319abe765c5eafd1e88f523236afd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CanvasButton
+  - hash:
+      serializedVersion: 2
       Hash: 9e3124d0e03404c15fd9e7b53f80de77
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.EventSystems
@@ -1140,6 +1155,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OVRGrabber
+  - hash:
+      serializedVersion: 2
+      Hash: 272319abe765c5eafd1e88f523236afd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CanvasButtonText
   - hash:
       serializedVersion: 2
       Hash: 1dcb82730d983b77cec736c6ef19f814
